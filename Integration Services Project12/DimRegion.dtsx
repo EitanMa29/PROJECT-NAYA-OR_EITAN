@@ -1,0 +1,1760 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/30/2022 7:49:16 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-LCICVTU"
+  DTS:CreatorName="DESKTOP-LCICVTU\NAYA ACADEMY"
+  DTS:DTSID="{DCF7CB6F-2A63-41CD-AE3E-3204A2307564}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.60"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DimRegion"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{01B8C767-DC9F-4579-B600-859D1F27BA43}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DWH]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{28D9368A-DD3E-4B00-9AC2-ED914E5F4FBF}"
+      DTS:ObjectName="DWH">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{C2159181-C5C1-4DF2-858D-9CA6B8338E5D}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\NAYA ACADEMY\Desktop\Regions01.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{49205E56-654B-425D-B596-DFB46C8750B2}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\NAYA ACADEMY\Desktop\Regions02.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MRR_STG]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D1C4CC44-47B4-4900-BC6E-79C634AB0C1D}"
+      DTS:ObjectName="MRR_STG">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=MRR_STG;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DWH"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{88EE0745-C43C-49C2-89BC-C9AD339C0C5C}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DWH">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DWH\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{5B1FC315-494E-456F-957F-F0E2A81B7060}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DWH\Data Flow Task\dwh"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="dwh"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DIMRegions]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\Data Flow Task\dwh.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DWH]"
+                      connectionManagerRefId="Package.ConnectionManagers[DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input].Columns[שם יישוב]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="שם יישוב"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input].ExternalColumns[שם יישוב]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[שם יישוב]" />
+                        <inputColumn
+                          refId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input].Columns[תיאור מחוז]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="תיאור מחוז"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input].ExternalColumns[תיאור מחוז]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[תיאור מחוז]" />
+                        <inputColumn
+                          refId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input].Columns[איזור]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="איזור"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input].ExternalColumns[איזור]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[איזור]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input].ExternalColumns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          name="שם יישוב" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input].ExternalColumns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          name="תיאור מחוז" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input].ExternalColumns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          name="איזור" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\Data Flow Task\dwh.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\dwh.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\dwh.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\dwh.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\dwh.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DWH\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[STG_DimRegions]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MRR_STG]"
+                      connectionManagerRefId="Package.ConnectionManagers[MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[שם יישוב]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[שם יישוב]"
+                          length="255"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[שם יישוב]"
+                          name="שם יישוב"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[תיאור מחוז]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[תיאור מחוז]"
+                          length="255"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[תיאור מחוז]"
+                          name="תיאור מחוז"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[איזור]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[איזור]"
+                          length="255"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[איזור]"
+                          name="איזור"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          name="שם יישוב" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          name="תיאור מחוז" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          name="איזור" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[שם יישוב]"
+                          name="שם יישוב" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[תיאור מחוז]"
+                          name="תיאור מחוז" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[איזור]"
+                          name="איזור" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DWH\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\DWH\Data Flow Task\dwh.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\MRR"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{4FA6EA5A-4004-42FC-8857-53684F5EA08C}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MRR">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\MRR\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{CEDF7C9E-B9C0-4846-AA8E-230D665FA496}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\MRR\Data Flow Task\Excel Source"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">גיליון1$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR\Data Flow Task\Excel Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[שם יישוב]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[שם יישוב]"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[שם יישוב]"
+                          name="שם יישוב"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[תיאור מחוז]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[תיאור מחוז]"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[תיאור מחוז]"
+                          name="תיאור מחוז"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[איזור]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[איזור]"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[איזור]"
+                          name="איזור"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          name="שם יישוב" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          name="תיאור מחוז" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          name="איזור" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[שם יישוב]"
+                          name="שם יישוב" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[תיאור מחוז]"
+                          name="תיאור מחוז" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[איזור]"
+                          name="איזור" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\MRR\Data Flow Task\Excel Source 1"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel Source 1"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">גיליון1$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR\Data Flow Task\Excel Source 1.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].Columns[שם יישוב]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].ExternalColumns[שם יישוב]"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].Columns[שם יישוב]"
+                          name="שם יישוב"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].Columns[תיאור מחוז]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].ExternalColumns[תיאור מחוז]"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].Columns[תיאור מחוז]"
+                          name="תיאור מחוז"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].Columns[איזור]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].ExternalColumns[איזור]"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].Columns[איזור]"
+                          name="איזור"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].ExternalColumns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          name="שם יישוב" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].ExternalColumns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          name="תיאור מחוז" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].ExternalColumns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          name="איזור" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Error Output].Columns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Error Output].Columns[שם יישוב]"
+                          name="שם יישוב" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Error Output].Columns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Error Output].Columns[תיאור מחוז]"
+                          name="תיאור מחוז" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Error Output].Columns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Error Output].Columns[איזור]"
+                          name="איזור" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\MRR\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimRegions]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MRR_STG]"
+                      connectionManagerRefId="Package.ConnectionManagers[MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[שם יישוב]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="שם יישוב"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[שם יישוב]"
+                          lineageId="Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[שם יישוב]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[תיאור מחוז]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="תיאור מחוז"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[תיאור מחוז]"
+                          lineageId="Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[תיאור מחוז]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[איזור]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="איזור"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[איזור]"
+                          lineageId="Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[איזור]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          name="שם יישוב" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          name="תיאור מחוז" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          name="איזור" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\MRR\Data Flow Task\Union All"
+                  componentClassID="Microsoft.UnionAll"
+                  contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+                  name="Union All"
+                  version="1">
+                  <inputs>
+                    <input
+                      refId="Package\MRR\Data Flow Task\Union All.Inputs[Union All Input 1]"
+                      name="Union All Input 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[שם יישוב]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="שם יישוב"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].Columns[שם יישוב]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[שם יישוב]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[תיאור מחוז]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="תיאור מחוז"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].Columns[תיאור מחוז]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[תיאור מחוז]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\Union All.Inputs[Union All Input 1].Columns[איזור]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="איזור"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output].Columns[איזור]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[איזור]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\MRR\Data Flow Task\Union All.Inputs[Union All Input 2]"
+                      hasSideEffects="true"
+                      name="Union All Input 2">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[שם יישוב]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="שם יישוב"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[שם יישוב]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[שם יישוב]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[תיאור מחוז]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="תיאור מחוז"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[תיאור מחוז]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[תיאור מחוז]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\Union All.Inputs[Union All Input 2].Columns[איזור]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="איזור"
+                          lineageId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[איזור]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[איזור]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\MRR\Data Flow Task\Union All.Inputs[Union All Input 3]"
+                      dangling="true"
+                      hasSideEffects="true"
+                      name="Union All Input 3">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1]"
+                      name="Union All Output 1">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[שם יישוב]"
+                          name="שם יישוב" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[תיאור מחוז]"
+                          name="תיאור מחוז" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1].Columns[איזור]"
+                          name="איזור" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\MRR\Data Flow Task.Paths[Excel Source Output]"
+                  endId="Package\MRR\Data Flow Task\Union All.Inputs[Union All Input 1]"
+                  name="Excel Source Output"
+                  startId="Package\MRR\Data Flow Task\Excel Source 1.Outputs[Excel Source Output]" />
+                <path
+                  refId="Package\MRR\Data Flow Task.Paths[Excel Source Output1]"
+                  endId="Package\MRR\Data Flow Task\Union All.Inputs[Union All Input 2]"
+                  name="Excel Source Output"
+                  startId="Package\MRR\Data Flow Task\Excel Source.Outputs[Excel Source Output]" />
+                <path
+                  refId="Package\MRR\Data Flow Task.Paths[Union All Output 1]"
+                  endId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Union All Output 1"
+                  startId="Package\MRR\Data Flow Task\Union All.Outputs[Union All Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STG"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{6d94a0d7-5422-4e26-8917-b64c98b2b3ec}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STG">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\STG\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{6fb1df9a-adf9-4d6b-8ca4-0d0c850212c0}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\STG\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[STG_DimRegions]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MRR_STG]"
+                      connectionManagerRefId="Package.ConnectionManagers[MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[שם יישוב]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="שם יישוב"
+                          externalMetadataColumnId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[שם יישוב]"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[שם יישוב]" />
+                        <inputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[תיאור מחוז]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="תיאור מחוז"
+                          externalMetadataColumnId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[תיאור מחוז]"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[תיאור מחוז]" />
+                        <inputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[איזור]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="איזור"
+                          externalMetadataColumnId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[איזור]"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[איזור]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          name="שם יישוב" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          name="תיאור מחוז" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          name="איזור" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STG\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STG\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DimRegions]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[MRR_STG]"
+                      connectionManagerRefId="Package.ConnectionManagers[MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[שם יישוב]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[שם יישוב]"
+                          length="255"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[שם יישוב]"
+                          name="שם יישוב"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[תיאור מחוז]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[תיאור מחוז]"
+                          length="255"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[תיאור מחוז]"
+                          name="תיאור מחוז"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[איזור]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[איזור]"
+                          length="255"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[איזור]"
+                          name="איזור"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          name="שם יישוב" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          name="תיאור מחוז" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          name="איזור" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[שם יישוב]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[שם יישוב]"
+                          name="שם יישוב" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[תיאור מחוז]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[תיאור מחוז]"
+                          name="תיאור מחוז" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[איזור]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[איזור]"
+                          name="איזור" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\STG\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\STG\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\STG\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{51B483F5-2BEE-466D-B18A-9D200C172DC0}"
+      DTS:From="Package\MRR"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D4FB7FA1-244D-4F39-9079-C25070B7683B}"
+      DTS:From="Package\STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DWH" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\MRR\Data Flow Task"
+          TopLeft="23.4166603274643,29.6999971562625" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="205.333333333334,182.666666666667"
+          Size="205.333333333334,226"
+          Id="Package\MRR"
+          TopLeft="172.916664090007,25.9999995350837" />
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\STG\Data Flow Task"
+          TopLeft="23.4166603274643,29.6999971562625" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="205.333333333334,182.666666666667"
+          Size="205.333333333334,225.333333333334"
+          Id="Package\STG"
+          TopLeft="147.916664462537,337.999993956089" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="275.583330756674,251.999999535084">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-24.9999996274708,85.9999944210054"
+              Start="0,0"
+              End="-24.9999996274708,78.4999944210054">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.9999972105027" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.9999972105027"
+                    Point2="0,42.9999972105027"
+                    Point3="-4,42.9999972105027" />
+                  <mssgle:LineSegment
+                    End="-20.9999996274708,42.9999972105027" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-20.9999996274708,42.9999972105027"
+                    Point2="-24.9999996274708,42.9999972105027"
+                    Point3="-24.9999996274708,46.9999972105027" />
+                  <mssgle:LineSegment
+                    End="-24.9999996274708,78.4999944210054" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\DWH\Data Flow Task"
+          TopLeft="24.2380929497026,29.6190357968923" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="256.666666666667,171.333333333334"
+          Size="256.666666666667,214.666666666667"
+          Id="Package\DWH"
+          TopLeft="138.095236037459,662.999988144636" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="250.583331129203,563.333327289423">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="15.8452382415886,99.6666608552138"
+              Start="0,0"
+              End="15.8452382415886,92.1666608552138">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.8333304276069" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.8333304276069"
+                    Point2="0,49.8333304276069"
+                    Point3="4,49.8333304276069" />
+                  <mssgle:LineSegment
+                    End="11.8452382415886,49.8333304276069" />
+                  <mssgle:CubicBezierSegment
+                    Point1="11.8452382415886,49.8333304276069"
+                    Point2="15.8452382415886,49.8333304276069"
+                    Point3="15.8452382415886,53.8333304276069" />
+                  <mssgle:LineSegment
+                    End="15.8452382415886,92.1666608552138" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\MRR\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139.333333333334,42.6666666666667"
+          Id="Package\MRR\Data Flow Task\Excel Source"
+          TopLeft="40.2777771775922,23.6888884652986" />
+        <NodeLayout
+          Size="148,48"
+          Id="Package\MRR\Data Flow Task\Excel Source 1"
+          TopLeft="207.22221913437,20.9555552404457" />
+        <NodeLayout
+          Size="121.333333333334,42"
+          Id="Package\MRR\Data Flow Task\Union All"
+          TopLeft="102.77777624627,133.555553179317" />
+        <EdgeLayout
+          Id="Package\MRR\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="281.22221913437,68.9555552404457">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-117.777776221434,64.5999979388715"
+              Start="0,0"
+              End="-117.777776221434,57.0999979388715">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.2999989694357" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.2999989694357"
+                    Point2="0,32.2999989694357"
+                    Point3="-4,32.2999989694357" />
+                  <mssgle:LineSegment
+                    End="-113.777776221434,32.2999989694357" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-113.777776221434,32.2999989694357"
+                    Point2="-117.777776221434,32.2999989694357"
+                    Point3="-117.777776221434,36.2999989694357" />
+                  <mssgle:LineSegment
+                    End="-117.777776221434,57.0999979388715" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\MRR\Data Flow Task.Paths[Excel Source Output1]"
+          TopLeft="109.944443844259,66.3555551319652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34.6111101797886,67.1999980473519"
+              Start="0,0"
+              End="34.6111101797886,59.6999980473519">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.7952266093863" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35.7952266093863"
+                    Point2="0,39.7952266093863"
+                    Point3="4,39.7952266093863" />
+                  <mssgle:LineSegment
+                    End="30.6111101797886,39.7952266093863" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.6111101797886,39.7952266093863"
+                    Point2="34.6111101797886,39.7952266093863"
+                    Point3="34.6111101797886,43.7952266093863" />
+                  <mssgle:LineSegment
+                    End="34.6111101797886,59.6999980473519" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\MRR\Data Flow Task\OLE DB Destination"
+          TopLeft="76.0416655335575,224.249995990098" />
+        <EdgeLayout
+          Id="Package\MRR\Data Flow Task.Paths[Union All Output 1]"
+          TopLeft="162.743054223247,175.555553179317">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.6944428107805"
+              Start="0,0"
+              End="0,41.1944428107805">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.1944428107805" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR\Data Flow Task\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR\Data Flow Task\Excel Source 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\STG\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\STG\Data Flow Task\OLE DB Source"
+          TopLeft="134.666666666667,33.3333333333333" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\STG\Data Flow Task\OLE DB Destination"
+          TopLeft="126.666666666667,118.666666666667" />
+        <EdgeLayout
+          Id="Package\STG\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="211.333333333333,76">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.6666666666667"
+              Start="0,0"
+              End="0,35.1666666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.1666666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DWH\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\DWH\Data Flow Task\OLE DB Source"
+          TopLeft="273.641025641026,26.974358974359" />
+        <NodeLayout
+          Size="100,42.6666666666667"
+          Id="Package\DWH\Data Flow Task\dwh"
+          TopLeft="262.666666666667,122.666666666667" />
+        <EdgeLayout
+          Id="Package\DWH\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="348.974358974359,69.6410256410256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-36.3076923076923,53.025641025641"
+              Start="0,0"
+              End="-36.3076923076923,45.525641025641">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5128205128205" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.5128205128205"
+                    Point2="0,26.5128205128205"
+                    Point3="-4,26.5128205128205" />
+                  <mssgle:LineSegment
+                    End="-32.3076923076923,26.5128205128205" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-32.3076923076923,26.5128205128205"
+                    Point2="-36.3076923076923,26.5128205128205"
+                    Point3="-36.3076923076923,30.5128205128205" />
+                  <mssgle:LineSegment
+                    End="-36.3076923076923,45.525641025641" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\Data Flow Task\dwh">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
