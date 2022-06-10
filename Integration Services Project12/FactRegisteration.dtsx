@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="FactRegisteration"
   DTS:PackageType="5"
-  DTS:VersionBuild="10"
-  DTS:VersionGUID="{0A87BB55-4622-4BEB-8E96-EA88BC93A9E1}">
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{85E40F09-2DE5-49E0-91CE-7992CCB27E79}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -4540,62 +4540,6 @@ FROM [NAYA_OLTP].[dbo].[KRegistrationsTbl]</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="158.666666666667,42.6666666666667"
-          Id="Package\MRR_FactRegiteration\RegisterationTBL"
-          TopLeft="34.4999948963524,6.59999793887141" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="374,113.333333333334"
-          Size="374,156"
-          Id="Package\MRR_FactRegiteration"
-          TopLeft="477.916659545154,20.799999628067" />
-        <NodeLayout
-          Size="152,42.6666666666667"
-          Id="Package\STG_FactRegisteration\Data Flow Task"
-          TopLeft="90.611107406517,27.2222171339725" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="625.333333333334,124.666666666667"
-          Size="625.333333333334,168"
-          Id="Package\STG_FactRegisteration"
-          TopLeft="72.9166655801235,226.055551513367" />
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="664.916659545154,176.799999628067">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-279.333327298364,49.2555518853003"
-              Start="0,0"
-              End="-279.333327298364,41.7555518853003">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.6277759426501" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.6277759426501"
-                    Point2="0,24.6277759426501"
-                    Point3="-4,24.6277759426501" />
-                  <mssgle:LineSegment
-                    End="-275.333327298364,24.6277759426501" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-275.333327298364,24.6277759426501"
-                    Point2="-279.333327298364,24.6277759426501"
-                    Point3="-279.333327298364,28.6277759426501" />
-                  <mssgle:LineSegment
-                    End="-279.333327298364,41.7555518853003" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
           Size="152,42.6666666666667"
           Id="Package\DWH_FactRegisteration\Data Flow Task"
           TopLeft="18.9166628482441,8.3333248873555" />
@@ -4605,33 +4549,89 @@ FROM [NAYA_OLTP].[dbo].[KRegistrationsTbl]</property>
           PanelSize="212.666666666667,105.333333333334"
           Size="212.666666666667,148"
           Id="Package\DWH_FactRegisteration"
-          TopLeft="293.333328962326,439.766659607689" />
+          TopLeft="640.555546010534,439.766659607689" />
+        <NodeLayout
+          Size="158.666666666667,42.6666666666667"
+          Id="Package\MRR_FactRegiteration\RegisterationTBL"
+          TopLeft="34.4999948963524,6.59999793887141" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="374,113.333333333334"
+          Size="374,156"
+          Id="Package\MRR_FactRegiteration"
+          TopLeft="825.138876593362,20.799999628067" />
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\STG_FactRegisteration\Data Flow Task"
+          TopLeft="90.611107406517,27.2222171339725" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="1189.33333333334,125.333333333334"
+          Size="1189.33333333334,168"
+          Id="Package\STG_FactRegisteration"
+          TopLeft="72.9166655801235,226.055551513367" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="385.58333224679,394.055551513367">
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="1012.13887659336,176.799999628067">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="14.0833300488694,45.7111080943215"
+              EndConnector="-344.555544346572,49.2555518853"
               Start="0,0"
-              End="14.0833300488694,38.2111080943215">
+              End="-344.555544346572,41.7555518853">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.8555540471608" />
+                    End="0,20.62777594265" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,18.8555540471608"
-                    Point2="0,22.8555540471608"
-                    Point3="4,22.8555540471608" />
+                    Point1="0,20.62777594265"
+                    Point2="0,24.62777594265"
+                    Point3="-4,24.62777594265" />
                   <mssgle:LineSegment
-                    End="10.0833300488694,22.8555540471608" />
+                    End="-340.555544346572,24.62777594265" />
                   <mssgle:CubicBezierSegment
-                    Point1="10.0833300488694,22.8555540471608"
-                    Point2="14.0833300488694,22.8555540471608"
-                    Point3="14.0833300488694,26.8555540471608" />
+                    Point1="-340.555544346572,24.62777594265"
+                    Point2="-344.555544346572,24.62777594265"
+                    Point3="-344.555544346572,28.62777594265" />
                   <mssgle:LineSegment
-                    End="14.0833300488694,38.2111080943215" />
+                    End="-344.555544346572,41.7555518853" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="667.58333224679,394.055551513367">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79.3055470970772,45.711108094322"
+              Start="0,0"
+              End="79.3055470970772,38.211108094322">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.855554047161" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.855554047161"
+                    Point2="0,22.855554047161"
+                    Point3="4,22.855554047161" />
+                  <mssgle:LineSegment
+                    End="75.3055470970772,22.855554047161" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75.3055470970772,22.855554047161"
+                    Point2="79.3055470970772,22.855554047161"
+                    Point3="79.3055470970772,26.855554047161" />
+                  <mssgle:LineSegment
+                    End="79.3055470970772,38.211108094322" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -4643,141 +4643,6 @@ FROM [NAYA_OLTP].[dbo].[KRegistrationsTbl]</property>
       </GraphLayout>
     </LayoutInfo>
   </Package>
-  <TaskHost
-    design-time-name="Package\MRR_FactRegiteration\RegisterationTBL">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="150.666666666667,42.6666666666667"
-          Id="Package\MRR_FactRegiteration\RegisterationTBL\OLE DB Source"
-          TopLeft="63.8888879368703,10.1111109303104" />
-        <NodeLayout
-          Size="172,42.6666666666667"
-          Id="Package\MRR_FactRegiteration\RegisterationTBL\OLE DB Destination"
-          TopLeft="69.9999989569187,87.0999984425307" />
-        <EdgeLayout
-          Id="Package\MRR_FactRegiteration\RegisterationTBL.Paths[OLE DB Source Output]"
-          TopLeft="139.222221270204,52.777777596977">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="16.7777776867152,34.3222208455536"
-              Start="0,0"
-              End="16.7777776867152,26.8222208455536">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.1611104227768" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.1611104227768"
-                    Point2="0,17.1611104227768"
-                    Point3="4,17.1611104227768" />
-                  <mssgle:LineSegment
-                    End="12.7777776867152,17.1611104227768" />
-                  <mssgle:CubicBezierSegment
-                    Point1="12.7777776867152,17.1611104227768"
-                    Point2="16.7777776867152,17.1611104227768"
-                    Point3="16.7777776867152,21.1611104227768" />
-                  <mssgle:LineSegment
-                    End="16.7777776867152,26.8222208455536" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\MRR_FactRegiteration\RegisterationTBL\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\MRR_FactRegiteration\RegisterationTBL\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\STG_FactRegisteration\Data Flow Task">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="150.666666666667,42.6666666666667"
-          Id="Package\STG_FactRegisteration\Data Flow Task\OLE DB Source"
-          TopLeft="121.333333333333,18.6666666666667" />
-        <NodeLayout
-          Size="172,42.6666666666667"
-          Id="Package\STG_FactRegisteration\Data Flow Task\OLE DB Destination"
-          TopLeft="116.190476190476,102.857142857143" />
-        <EdgeLayout
-          Id="Package\STG_FactRegisteration\Data Flow Task.Paths[OLE DB Source Output]"
-          TopLeft="199.428571428571,61.3333333333333">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41.5238095238095"
-              Start="0,0"
-              End="0,34.0238095238095">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,34.0238095238095" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG_FactRegisteration\Data Flow Task\OLE DB Source">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\STG_FactRegisteration\Data Flow Task\OLE DB Destination">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\DWH_FactRegisteration\Data Flow Task">
     <LayoutInfo>
@@ -4829,7 +4694,7 @@ FROM [NAYA_OLTP].[dbo].[KRegistrationsTbl]</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\DWH_FactRegisteration\Data Flow Task\OLE DB Source">
+    design-time-name="Package\DWH_FactRegisteration\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -4842,7 +4707,142 @@ FROM [NAYA_OLTP].[dbo].[KRegistrationsTbl]</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\DWH_FactRegisteration\Data Flow Task\OLE DB Destination">
+    design-time-name="Package\DWH_FactRegisteration\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\MRR_FactRegiteration\RegisterationTBL">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\MRR_FactRegiteration\RegisterationTBL\OLE DB Source"
+          TopLeft="63.8888879368703,10.1111109303104" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\MRR_FactRegiteration\RegisterationTBL\OLE DB Destination"
+          TopLeft="69.9999989569187,87.0999984425307" />
+        <EdgeLayout
+          Id="Package\MRR_FactRegiteration\RegisterationTBL.Paths[OLE DB Source Output]"
+          TopLeft="139.222221270204,52.777777596977">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.7777776867152,34.3222208455536"
+              Start="0,0"
+              End="16.7777776867152,26.8222208455536">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.1611104227768" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.1611104227768"
+                    Point2="0,17.1611104227768"
+                    Point3="4,17.1611104227768" />
+                  <mssgle:LineSegment
+                    End="12.7777776867152,17.1611104227768" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.7777776867152,17.1611104227768"
+                    Point2="16.7777776867152,17.1611104227768"
+                    Point3="16.7777776867152,21.1611104227768" />
+                  <mssgle:LineSegment
+                    End="16.7777776867152,26.8222208455536" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR_FactRegiteration\RegisterationTBL\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR_FactRegiteration\RegisterationTBL\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\STG_FactRegisteration\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\STG_FactRegisteration\Data Flow Task\OLE DB Source"
+          TopLeft="121.333333333333,18.6666666666667" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\STG_FactRegisteration\Data Flow Task\OLE DB Destination"
+          TopLeft="116.190476190476,102.857142857143" />
+        <EdgeLayout
+          Id="Package\STG_FactRegisteration\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="199.428571428571,61.3333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.5238095238095"
+              Start="0,0"
+              End="0,34.0238095238095">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.0238095238095" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG_FactRegisteration\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG_FactRegisteration\Data Flow Task\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
