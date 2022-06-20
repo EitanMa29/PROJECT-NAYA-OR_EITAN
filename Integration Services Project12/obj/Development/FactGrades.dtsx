@@ -1,0 +1,1846 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/10/2022 11:30:22 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-LCICVTU"
+  DTS:CreatorName="DESKTOP-LCICVTU\NAYA ACADEMY"
+  DTS:DTSID="{3A86BE19-7713-4595-855F-C45229F87571}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.60"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="FactGrades"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{09BB25A9-712A-4B6A-8D22-5121755EE2FF}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.DWH]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{960227BA-74FE-4DC7-B8DE-99F6BAA0417F}"
+      DTS:ObjectName="LocalHost.DWH">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DWH;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.MRR_STG]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1ADE3D3F-F537-4342-A8CE-889EBEA805EB}"
+      DTS:ObjectName="LocalHost.MRR_STG">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=MRR_STG;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.NAYA_OLTP]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{463D1F5B-E678-45F2-908C-E9FC55F9D247}"
+      DTS:ObjectName="LocalHost.NAYA_OLTP">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=NAYA_OLTP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.NAYA_OLTP 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{478D5D8C-1AD1-43ED-B8BB-E49F0F64C075}"
+      DTS:ObjectName="LocalHost.NAYA_OLTP 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=NAYA_OLTP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DWH"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{29B77089-E8AD-4CA2-98C5-CA7367B642A7}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DWH">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DWH\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F7B947C5-FA1C-4120-9EFF-F59222B4ABA9}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DWH\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[DWH_FactGrades]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.DWH]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.DWH]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KDateFld]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="KDateFld"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KDateFld]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KDateFld]" />
+                        <inputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KStudentIdFld]"
+                          cachedDataType="i4"
+                          cachedName="KStudentIdFld"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KStudentIdFld]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KStudentIdFld]" />
+                        <inputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KCourseFld]"
+                          cachedDataType="i4"
+                          cachedName="KCourseFld"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KCourseFld]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCourseFld]" />
+                        <inputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KGradeFld]"
+                          cachedDataType="r8"
+                          cachedName="KGradeFld"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KGradeFld]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradeFld]" />
+                        <inputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KAssignmentTypeFld]"
+                          cachedDataType="i4"
+                          cachedName="KAssignmentTypeFld"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KAssignmentTypeFld]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentTypeFld]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          name="KDateFld" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KStudentIdFld]"
+                          dataType="i4"
+                          name="KStudentIdFld" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KCourseFld]"
+                          dataType="i4"
+                          name="KCourseFld" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KGradeFld]"
+                          dataType="r8"
+                          name="KGradeFld" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          name="KAssignmentTypeFld" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DWH\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[STG_GRADES]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DWH\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.MRR_STG]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KDateFld]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KDateFld]"
+                          name="KDateFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KStudentIdFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KStudentIdFld]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KStudentIdFld]"
+                          name="KStudentIdFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCourseFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KCourseFld]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCourseFld]"
+                          name="KCourseFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradeFld]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KGradeFld]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradeFld]"
+                          name="KGradeFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KAssignmentTypeFld]"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentTypeFld]"
+                          name="KAssignmentTypeFld"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          name="KDateFld" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KStudentIdFld]"
+                          dataType="i4"
+                          name="KStudentIdFld" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KCourseFld]"
+                          dataType="i4"
+                          name="KCourseFld" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KGradeFld]"
+                          dataType="r8"
+                          name="KGradeFld" />
+                        <externalMetadataColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          name="KAssignmentTypeFld" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KDateFld]"
+                          name="KDateFld" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KStudentIdFld]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KStudentIdFld]"
+                          name="KStudentIdFld" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KCourseFld]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KCourseFld]"
+                          name="KCourseFld" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KGradeFld]"
+                          dataType="r8"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KGradeFld]"
+                          name="KGradeFld" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KAssignmentTypeFld]"
+                          name="KAssignmentTypeFld" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DWH\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\DWH\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\DWH\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\MRR"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{41C9B067-3C83-4813-BED2-75E86DAA18B8}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="MRR">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\MRR\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{9DC93EE7-210F-4453-92C4-394E91CA9CE8}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\MRR\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[MRR_FactGrades]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.MRR_STG]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KDateFld]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="KDateFld"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KDateFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KDateFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KStudentIdFld]"
+                          cachedDataType="i4"
+                          cachedName="KStudentIdFld"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KStudentIdFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KStudentIdFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KCourseFld]"
+                          cachedDataType="i4"
+                          cachedName="KCourseFld"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KCourseFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCourseFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KGradeFld]"
+                          cachedDataType="r8"
+                          cachedName="KGradeFld"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KGradeFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradeFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KAssignmentTypeFld]"
+                          cachedDataType="i4"
+                          cachedName="KAssignmentTypeFld"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KAssignmentTypeFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentTypeFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KGradePercentageFld]"
+                          cachedDataType="i4"
+                          cachedName="KGradePercentageFld"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KGradePercentageFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradePercentageFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KCommentsFld]"
+                          cachedDataType="wstr"
+                          cachedLength="4000"
+                          cachedName="KCommentsFld"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KCommentsFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCommentsFld]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[updateduserid]"
+                          cachedDataType="i4"
+                          cachedName="updateduserid"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[updateduserid]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[updateduserid]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[updateddate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="updateddate"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[updateddate]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[updateddate]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[containertable]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="containertable"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[containertable]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[containertable]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[containerid]"
+                          cachedDataType="i4"
+                          cachedName="containerid"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[containerid]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[containerid]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[parentid]"
+                          cachedDataType="i4"
+                          cachedName="parentid"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parentid]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[parentid]" />
+                        <inputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KAssignmentFld]"
+                          cachedDataType="i4"
+                          cachedName="KAssignmentFld"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KAssignmentFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentFld]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          name="KDateFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KStudentIdFld]"
+                          dataType="i4"
+                          name="KStudentIdFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KCourseFld]"
+                          dataType="i4"
+                          name="KCourseFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KGradeFld]"
+                          dataType="r8"
+                          name="KGradeFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          name="KAssignmentTypeFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KGradePercentageFld]"
+                          dataType="i4"
+                          name="KGradePercentageFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KCommentsFld]"
+                          dataType="wstr"
+                          length="4000"
+                          name="KCommentsFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[updateduserid]"
+                          dataType="i4"
+                          name="updateduserid" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[updateddate]"
+                          dataType="dbTimeStamp"
+                          name="updateddate" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[containertable]"
+                          dataType="wstr"
+                          length="50"
+                          name="containertable" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[containerid]"
+                          dataType="i4"
+                          name="containerid" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[parentid]"
+                          dataType="i4"
+                          name="parentid" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KAssignmentFld]"
+                          dataType="i4"
+                          name="KAssignmentFld" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\MRR\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[KGradesTbl]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\MRR\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.NAYA_OLTP 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.NAYA_OLTP 1]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KDateFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KDateFld]"
+                          name="KDateFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KStudentIdFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KStudentIdFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KStudentIdFld]"
+                          name="KStudentIdFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCourseFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KCourseFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCourseFld]"
+                          name="KCourseFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradeFld]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KGradeFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradeFld]"
+                          name="KGradeFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KAssignmentTypeFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentTypeFld]"
+                          name="KAssignmentTypeFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradePercentageFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KGradePercentageFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradePercentageFld]"
+                          name="KGradePercentageFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCommentsFld]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KCommentsFld]"
+                          length="4000"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCommentsFld]"
+                          name="KCommentsFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[updateduserid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[updateduserid]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[updateduserid]"
+                          name="updateduserid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[updateddate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[updateddate]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[updateddate]"
+                          name="updateddate"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[containertable]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[containertable]"
+                          length="50"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[containertable]"
+                          name="containertable"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[containerid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[containerid]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[containerid]"
+                          name="containerid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[parentid]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[parentid]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[parentid]"
+                          name="parentid"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KAssignmentFld]"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentFld]"
+                          name="KAssignmentFld"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          name="KDateFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KStudentIdFld]"
+                          dataType="i4"
+                          name="KStudentIdFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KCourseFld]"
+                          dataType="i4"
+                          name="KCourseFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KGradeFld]"
+                          dataType="r8"
+                          name="KGradeFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          name="KAssignmentTypeFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KGradePercentageFld]"
+                          dataType="i4"
+                          name="KGradePercentageFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KCommentsFld]"
+                          dataType="wstr"
+                          length="4000"
+                          name="KCommentsFld" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[updateduserid]"
+                          dataType="i4"
+                          name="updateduserid" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[updateddate]"
+                          dataType="dbTimeStamp"
+                          name="updateddate" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[containertable]"
+                          dataType="wstr"
+                          length="50"
+                          name="containertable" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[containerid]"
+                          dataType="i4"
+                          name="containerid" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[parentid]"
+                          dataType="i4"
+                          name="parentid" />
+                        <externalMetadataColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KAssignmentFld]"
+                          dataType="i4"
+                          name="KAssignmentFld" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KDateFld]"
+                          name="KDateFld" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KStudentIdFld]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KStudentIdFld]"
+                          name="KStudentIdFld" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KCourseFld]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KCourseFld]"
+                          name="KCourseFld" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KGradeFld]"
+                          dataType="r8"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KGradeFld]"
+                          name="KGradeFld" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KAssignmentTypeFld]"
+                          name="KAssignmentTypeFld" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KGradePercentageFld]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KGradePercentageFld]"
+                          name="KGradePercentageFld" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KCommentsFld]"
+                          dataType="wstr"
+                          length="4000"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KCommentsFld]"
+                          name="KCommentsFld" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[updateduserid]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[updateduserid]"
+                          name="updateduserid" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[updateddate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[updateddate]"
+                          name="updateddate" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[containertable]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[containertable]"
+                          name="containertable" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[containerid]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[containerid]"
+                          name="containerid" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[parentid]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[parentid]"
+                          name="parentid" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KAssignmentFld]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KAssignmentFld]"
+                          name="KAssignmentFld" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\MRR\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\MRR\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\MRR\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\STG"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{0E6A3297-9692-4239-9E41-7BF84879AD28}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="STG">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\STG\Data Flow Task 1"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{0864887E-353A-42D9-850A-AFE8705C9444}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task 1"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\STG\Data Flow Task 1\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[STG_GRADES]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\Data Flow Task 1\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.MRR_STG]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[id]"
+                          cachedDataType="i4"
+                          cachedName="id"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]" />
+                        <inputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KDateFld]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="KDateFld"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KDateFld]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KDateFld]" />
+                        <inputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KStudentIdFld]"
+                          cachedDataType="i4"
+                          cachedName="KStudentIdFld"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KStudentIdFld]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KStudentIdFld]" />
+                        <inputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KCourseFld]"
+                          cachedDataType="i4"
+                          cachedName="KCourseFld"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KCourseFld]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCourseFld]" />
+                        <inputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KGradeFld]"
+                          cachedDataType="r8"
+                          cachedName="KGradeFld"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KGradeFld]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradeFld]" />
+                        <inputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[KAssignmentTypeFld]"
+                          cachedDataType="i4"
+                          cachedName="KAssignmentTypeFld"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KAssignmentTypeFld]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentTypeFld]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          name="KDateFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KStudentIdFld]"
+                          dataType="i4"
+                          name="KStudentIdFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KCourseFld]"
+                          dataType="i4"
+                          name="KCourseFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KGradeFld]"
+                          dataType="r8"
+                          name="KGradeFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          name="KAssignmentTypeFld" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\STG\Data Flow Task 1\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\STG\Data Flow Task 1\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[MRR_FactGrades]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\STG\Data Flow Task 1\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.MRR_STG]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.MRR_STG]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[id]"
+                          name="id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KDateFld]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KDateFld]"
+                          name="KDateFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KStudentIdFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KStudentIdFld]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KStudentIdFld]"
+                          name="KStudentIdFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCourseFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KCourseFld]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KCourseFld]"
+                          name="KCourseFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradeFld]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KGradeFld]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KGradeFld]"
+                          name="KGradeFld"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KAssignmentTypeFld]"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].Columns[KAssignmentTypeFld]"
+                          name="KAssignmentTypeFld"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[id]"
+                          dataType="i4"
+                          name="id" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          name="KDateFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KStudentIdFld]"
+                          dataType="i4"
+                          name="KStudentIdFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KCourseFld]"
+                          dataType="i4"
+                          name="KCourseFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KGradeFld]"
+                          dataType="r8"
+                          name="KGradeFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          name="KAssignmentTypeFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KGradePercentageFld]"
+                          dataType="i4"
+                          name="KGradePercentageFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KCommentsFld]"
+                          dataType="wstr"
+                          length="4000"
+                          name="KCommentsFld" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[updateduserid]"
+                          dataType="i4"
+                          name="updateduserid" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[updateddate]"
+                          dataType="dbTimeStamp"
+                          name="updateddate" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[containertable]"
+                          dataType="wstr"
+                          length="50"
+                          name="containertable" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[containerid]"
+                          dataType="i4"
+                          name="containerid" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[parentid]"
+                          dataType="i4"
+                          name="parentid" />
+                        <externalMetadataColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[KAssignmentFld]"
+                          dataType="i4"
+                          name="KAssignmentFld" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[id]"
+                          name="id" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KDateFld]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KDateFld]"
+                          name="KDateFld" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KStudentIdFld]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KStudentIdFld]"
+                          name="KStudentIdFld" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KCourseFld]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KCourseFld]"
+                          name="KCourseFld" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KGradeFld]"
+                          dataType="r8"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KGradeFld]"
+                          name="KGradeFld" />
+                        <outputColumn
+                          refId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KAssignmentTypeFld]"
+                          dataType="i4"
+                          lineageId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[KAssignmentTypeFld]"
+                          name="KAssignmentTypeFld" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\STG\Data Flow Task 1.Paths[OLE DB Source Output]"
+                  endId="Package\STG\Data Flow Task 1\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\STG\Data Flow Task 1\OLE DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F97ED14C-7A11-43C1-B916-A9473FD88556}"
+      DTS:From="Package\MRR"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{3B8E4D0C-A166-4772-98CD-B3AC58F04F96}"
+      DTS:From="Package\STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DWH" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\MRR\Data Flow Task"
+          TopLeft="22.2083273697644,8.96666660467784" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="205.333333333334,102.666666666667"
+          Size="205.333333333334,146"
+          Id="Package\MRR"
+          TopLeft="91.1111097534498,27.4444439536995" />
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\STG\Data Flow Task 1"
+          TopLeft="26.1111031224332,7.46666319529228" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="205.333333333334,105.333333333334"
+          Size="205.333333333334,148"
+          Id="Package\STG"
+          TopLeft="368.333327844739,32.9333327444394" />
+        <NodeLayout
+          Size="152,42.6666666666667"
+          Id="Package\DWH\Data Flow Task"
+          TopLeft="90.3333227286736,23.3333314736685" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="247.333333333334,120.666666666667"
+          Size="247.333333333334,164"
+          Id="Package\DWH"
+          TopLeft="621.666657403112,38.1333326514562" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="296.444443086783,103.688888349069">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="71.8888847579559,0"
+              Start="0,0"
+              End="64.3888847579559,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="64.3888847579559,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="573.666661178072,106.933332744439">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47.9999962250392,13.1999999070168"
+              Start="0,0"
+              End="40.4999962250392,13.1999999070168">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="19.9999981125196,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.9999981125196,0"
+                    Point2="23.9999981125196,0"
+                    Point3="23.9999981125196,4" />
+                  <mssgle:LineSegment
+                    End="23.9999981125196,9.19999990701677" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.9999981125196,9.19999990701677"
+                    Point2="23.9999981125196,13.1999999070168"
+                    Point3="27.9999981125196,13.1999999070168" />
+                  <mssgle:LineSegment
+                    End="40.4999962250392,13.1999999070168" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\MRR\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\MRR\Data Flow Task\OLE DB Source"
+          TopLeft="96.6666652262211,12.1333331163724" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\MRR\Data Flow Task\OLE DB Destination"
+          TopLeft="91.6666653007269,126.533331070741" />
+        <EdgeLayout
+          Id="Package\MRR\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="174.833331930141,54.7999997830391">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,71.733331287702"
+              Start="0,0"
+              End="0,64.233331287702">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.233331287702" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\STG\Data Flow Task 1">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\STG\Data Flow Task 1\OLE DB Source"
+          TopLeft="158.666666666667,44" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\STG\Data Flow Task 1\OLE DB Destination"
+          TopLeft="161.333333333333,152" />
+        <EdgeLayout
+          Id="Package\STG\Data Flow Task 1.Paths[OLE DB Source Output]"
+          TopLeft="234,86.6666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.3333333333333,65.3333333333333"
+              Start="0,0"
+              End="13.3333333333333,57.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.6666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.6666666666667"
+                    Point2="0,32.6666666666667"
+                    Point3="4,32.6666666666667" />
+                  <mssgle:LineSegment
+                    End="9.33333333333331,32.6666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.33333333333331,32.6666666666667"
+                    Point2="13.3333333333333,32.6666666666667"
+                    Point3="13.3333333333333,36.6666666666667" />
+                  <mssgle:LineSegment
+                    End="13.3333333333333,57.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DWH\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\DWH\Data Flow Task\OLE DB Source"
+          TopLeft="138.666666666667,38.6666666666667" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\DWH\Data Flow Task\OLE DB Destination"
+          TopLeft="128,141.333333333333" />
+        <EdgeLayout
+          Id="Package\DWH\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="214,81.3333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\MRR\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Data Flow Task 1\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\STG\Data Flow Task 1\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DWH\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
